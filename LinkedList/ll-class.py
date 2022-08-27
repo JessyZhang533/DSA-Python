@@ -15,14 +15,28 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
-    def print_list(self, value):
+    def print_list(self):
         " Print the items in the linked list one by one "
-        temp = self.head
-        while temp is not None:  # when the list is not none
+        temp = self.head        
+        while temp is not None:  # Iterate
             print(temp.value)
             temp = temp.next
+
+    def append(self, value):
+        " Append an item to the end of the linked list "
+        new_node = Node(value)
+        if self.head is None:  # when the list is None
+            self.head = new_node
+            self.tail = new_node
+            self.length = 1
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+            self.length += 1
+        return True  # Will be explained later
 
 
 my_linked_list = LinkedList(4)
 print(my_linked_list.head.value)
-my_linked_list.print_list(4)
+my_linked_list.append(1)
+my_linked_list.print_list()
