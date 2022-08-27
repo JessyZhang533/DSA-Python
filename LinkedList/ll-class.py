@@ -34,9 +34,28 @@ class LinkedList:
             self.tail = new_node
             self.length += 1
         return True  # Will be explained later
+    
+    def pop(self):
+        " Remove an item from the end of the linked list and then return this item"
+        if self.length == 0:  # Edge case 1: If the list is None
+            return None
+        temp = self.head
+        pre = self.head
+        while(temp.next):  # Equivalent to: while temp.next is True/not None
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.length -= 1
+        if self.length == 0:  # Edge case 2: If the list has length 1
+            self.head = None
+            self.tail = None
+        return temp  # return the entire node. If want to return value, use: 'return temp.value'
 
 
 my_linked_list = LinkedList(4)
 print(my_linked_list.head.value)
 my_linked_list.append(1)
 my_linked_list.print_list()
+print(my_linked_list.pop())
+print(my_linked_list.pop())
+print(my_linked_list.pop())
