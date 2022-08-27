@@ -17,13 +17,13 @@ class LinkedList:
 
     def print_list(self):
         " Print the items in the linked list one by one "
-        temp = self.head  
+        temp = self.head
         while temp is not None:  # Iterate
             print(temp.value)
             temp = temp.next
 
     def append(self, value):
-        " Append an item to the end of the linked list "
+        " Add an item to the end of the linked list "
         new_node = Node(value)
         if self.head is None:  # when the list is None
             self.head = new_node
@@ -36,7 +36,7 @@ class LinkedList:
         return True  # Will be explained later
 
     def pop(self):
-        " Remove an item from the end of the linked list and then return this item"
+        " Remove an item from the end of the linked list and then return this item "
         if self.length == 0:  # Edge case 1: If the list is None
             return None
         temp = self.head
@@ -52,11 +52,20 @@ class LinkedList:
             self.tail = None
         return temp.value  # return the entire (last) node. If want to return value, use: 'return temp.value'
 
+    def prepend(self, value):
+        " Add an item to the start of the list "
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1  # Always remember to update length since it is too an attribute
+        return True  # Will be explained later
+
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
-my_linked_list.append(1)
-# my_linked_list.print_list()
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
+my_linked_list.prepend(1)
+my_linked_list.print_list()
