@@ -64,8 +64,21 @@ class LinkedList:
         self.length += 1  # Always remember to update length since it is too an attribute
         return True  # Will be explained later
 
+    def pop_first(self):
+        " Remove an item from the start of the linked list and then return this item "
+        if self.length == 0:  # Edge case 1: If the list is None
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None  # Remove the first item
+        self.length -= 1
+        if self.length == 0:  # Edge case 2: If the list has length 1
+            self.tail = None
+        return temp.value
+
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
 my_linked_list.prepend(1)
+my_linked_list.pop_first()
 my_linked_list.print_list()
