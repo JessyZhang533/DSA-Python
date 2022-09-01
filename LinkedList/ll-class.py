@@ -93,6 +93,19 @@ class LinkedList:
             return True
         return False
 
+    def insert(self, index, value):
+        " Insert a value in the list at the position 'index' "
+        if index < 0 or index > (self.length - 1):
+            return False
+        if index == 0:  # Reuse function
+            return self.prepend(value)
+        if index == self.length:  # Reuse function
+            return self.append(value)
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next  # So that we don't have to create another pointer
+        temp.next = new_node      
+
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
@@ -100,4 +113,5 @@ my_linked_list.prepend(1)
 my_linked_list.append(7)
 print(my_linked_list.get(1))  # Note that we can't display the value if not having the print statement
 my_linked_list.set_value(0, 5)
+my_linked_list.insert(1, 9)
 my_linked_list.print_list()
