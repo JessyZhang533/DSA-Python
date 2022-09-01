@@ -104,7 +104,9 @@ class LinkedList:
         new_node = Node(value)
         temp = self.get(index - 1)
         new_node.next = temp.next  # So that we don't have to create another pointer
-        temp.next = new_node      
+        temp.next = new_node
+        self.length += 1  # Always remember to update the length!!!
+        return True
 
 
 my_linked_list = LinkedList(4)
