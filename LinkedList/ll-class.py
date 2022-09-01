@@ -18,7 +18,7 @@ class LinkedList:
     def print_list(self):
         " Print the items in the linked list one by one "
         temp = self.head
-        while temp is not None:  # Iterate
+        while(temp):  # Iterate; Equivalent to: while temp is True/not None
             print(temp.value)
             temp = temp.next
 
@@ -50,7 +50,7 @@ class LinkedList:
         if self.length == 0:  # Edge case 2: If the list has length 1
             self.head = None
             self.tail = None
-        return temp.value  # return the entire (last) node. If want to return value, use: 'return temp.value'
+        return temp.value  # If want to return value, use: 'return temp.value'; if want to return the entire node, use: 'return temp'
 
     def prepend(self, value):
         " Add an item to the start of the list "
@@ -74,11 +74,21 @@ class LinkedList:
         self.length -= 1
         if self.length == 0:  # Edge case 2: If the list has length 1
             self.tail = None
-        return temp.value
+        return temp.value  # If want to return value, use: 'return temp.value'; if want to return the entire node, use: 'return temp'
+
+    def get(self, index):
+        " Return the node at the 'index' "
+        if index < 0 or index > (self.length - 1):
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp.value  # If want to return value, use: 'return temp.value'; if want to return the entire node, use: 'return temp'
 
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
 my_linked_list.prepend(1)
-my_linked_list.pop_first()
+my_linked_list.append(7)
 my_linked_list.print_list()
+print(my_linked_list.get(1))  # Note that we can't display the value if not having the print statement
