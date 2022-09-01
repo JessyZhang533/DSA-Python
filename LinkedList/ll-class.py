@@ -121,6 +121,18 @@ class LinkedList:
         pre.next = temp.next
         temp.next = None
 
+    def reverse(self):
+        " Reverse the sequence of the list "
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp  # These two lines: reverse head and tail
+        before = None
+        for _ in range(self.length):  # This for loop: reverse the 'arrow' at every node; needs three additional pointers: before, temp, after
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
@@ -130,4 +142,5 @@ print(my_linked_list.get(1))  # Note that we can't display the value if not havi
 my_linked_list.set_value(0, 5)
 my_linked_list.insert(1, 9)
 my_linked_list.remove(3)
+my_linked_list.reverse()
 my_linked_list.print_list()
