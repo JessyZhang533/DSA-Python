@@ -33,7 +33,7 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
             self.length += 1
-        return True  # Will be explained later
+        return True  # see 'insert'
 
     def pop(self):
         " Remove an item from the end of the linked list and then return this item "
@@ -62,7 +62,7 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
         self.length += 1  # Always remember to update length since it is too an attribute
-        return True  # Will be explained later
+        return True  # see 'insert'
 
     def pop_first(self):
         " Remove an item from the start of the linked list and then return this item "
@@ -95,7 +95,7 @@ class LinkedList:
 
     def insert(self, index, value):
         " Insert a value in the list at the position 'index' "
-        if index < 0 or index > (self.length - 1):
+        if index < 0 or index > self.length:  # Here index can be equal to self.length, equivalent to append to the end of list
             return False
         if index == 0:  # Reuse function
             return self.prepend(value)
@@ -108,6 +108,19 @@ class LinkedList:
         self.length += 1  # Always remember to update the length!!!
         return True
 
+    def remove(self, index):
+        " Remove the item at the index "
+        if index < 0 or index > (self.length - 1):
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        temp = self.get(index)
+        pre = self.get(index-1)  # Alternative of these two lines: set pre, then temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
@@ -116,4 +129,5 @@ my_linked_list.append(7)
 print(my_linked_list.get(1))  # Note that we can't display the value if not having the print statement
 my_linked_list.set_value(0, 5)
 my_linked_list.insert(1, 9)
+my_linked_list.remove(3)
 my_linked_list.print_list()
