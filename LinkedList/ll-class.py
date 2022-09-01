@@ -83,12 +83,21 @@ class LinkedList:
         temp = self.head
         for _ in range(index):
             temp = temp.next
-        return temp.value  # If want to return value, use: 'return temp.value'; if want to return the entire node, use: 'return temp'
+        return temp  # If want to return value, use: 'return temp.value'; if want to return the entire node, use: 'return temp'
+
+    def set_value(self, index, value):
+        " Change the value of a node at a certain 'index' "
+        temp = self.get(index)  # Use the method we created earlier. Note that if we want this to work, 'get' should return the node(ie.temp) instead of just the value(ie.temp.value)
+        if temp:  # If temp is True/not None
+            temp.value = value  # assign value directly
+            return True
+        return False
 
 
 my_linked_list = LinkedList(4)
 # print(my_linked_list.head.value)
 my_linked_list.prepend(1)
 my_linked_list.append(7)
-my_linked_list.print_list()
 print(my_linked_list.get(1))  # Note that we can't display the value if not having the print statement
+my_linked_list.set_value(0, 5)
+my_linked_list.print_list()
