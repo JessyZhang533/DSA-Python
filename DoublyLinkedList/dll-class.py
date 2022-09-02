@@ -102,6 +102,24 @@ class DoublyLinkedList:
             return True
         return False
 
+    def insert(self, index, value):
+        " Insert an iten at the given index "
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:  # Reuse function
+            return self.prepend(value)
+        if index == self.length:  # Reuse function
+            return self.append(value)
+        new_node = Node(value)
+        before = self.get(index - 1)
+        after = before.next  # Here in doublylinkedlist we need two pointers 'before' and 'after'
+        new_node.prev = before
+        new_node.next = after
+        before.next = new_node
+        after.prev = new_node
+        self.length += 1
+        return True
+
 
 my_doubly_linked_list = DoublyLinkedList(3)
 my_doubly_linked_list.append(6)
@@ -115,12 +133,18 @@ my_doubly_linked_list.append(6)
 my_doubly_linked_list.append(7)
 print(my_doubly_linked_list.get(3))
 my_doubly_linked_list.set_value(1, 8)
+my_doubly_linked_list.insert(4, 9)
 my_doubly_linked_list.print_list()
 
 # Conclusions:
 # 1. If wanting to add an item to the list:
 # (1) Consider 2 scenarios: self.length == 0; general
 # (2) Always remember to create a new node
+# (3) Increase the length by 1
 # 2. If wanting to remove an item from the list:
 # (1) Consider 3 scenarios: self.length == 0; self.length == 1; general
+# (2) Decrease the length by 1
 # 3. A return statement ends the execution of a function, and returns control to the calling function.
+# 4. False is meant to be part of the True/False pair indicating binary concepts like "yes/no", "on/off", etc. None, on the other hand, represents the concept of nothing.
+# Variables with a value of None means they have no value at all. To compare it to False in the form of a metaphor, False would be like answering somebody by saying "No",
+# where None would be like not answering them at all.
