@@ -84,7 +84,7 @@ class DoublyLinkedList:
         " Return the node at the index "
         if index < 0 or index > (self.length - 1):
             return None
-        if index < self.length/2:
+        if index < self.length/2:  # DoublyLinkedList can be accessed from both ends; one of them is more efficient
             temp = self.head
             for _ in range(index):
                 temp = temp.next
@@ -92,7 +92,15 @@ class DoublyLinkedList:
             temp = self.tail
             for _ in range(self.length - 1, index, -1):  # Iteration starts from the last item; decrement by one in each loop
                 temp = temp.prev
-        return temp.value
+        return temp
+
+    def set_value(self, index, value):
+        " Change the value of the node at the given index "
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
 
 
 my_doubly_linked_list = DoublyLinkedList(3)
@@ -106,7 +114,8 @@ my_doubly_linked_list.append(5)
 my_doubly_linked_list.append(6)
 my_doubly_linked_list.append(7)
 print(my_doubly_linked_list.get(3))
-# my_doubly_linked_list.print_list()
+my_doubly_linked_list.set_value(1, 8)
+my_doubly_linked_list.print_list()
 
 # Conclusions:
 # 1. If wanting to add an item to the list:
@@ -114,3 +123,4 @@ print(my_doubly_linked_list.get(3))
 # (2) Always remember to create a new node
 # 2. If wanting to remove an item from the list:
 # (1) Consider 3 scenarios: self.length == 0; self.length == 1; general
+# 3. A return statement ends the execution of a function, and returns control to the calling function.
