@@ -36,7 +36,7 @@ class DoublyLinkedList:
     def pop(self):
         " Remove an item from the end of the list & return it "
         if self.head is None:  # Edge case 1: list is none
-            return None
+            return None  # function ends here
         temp = self.tail
         if self.length == 1:  # Edge case 2: (original)list has length of 1. We consider this case because need to point self.head to None.
             self.head = None
@@ -64,9 +64,33 @@ class DoublyLinkedList:
             self.length += 1
         return True
 
+    def pop_first(self):
+        " Remove the first item from the list & return it "
+        if self.length == 0:
+            return None  # function ends here
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None  # Cannot put this line in front of 'self.head = self.head.next',
+# because if 'temp.next = None' comes first, then self.head.next will also be None. Therefore self.head.prev would be invalid because Nonetype has no attribute prev
+        self.length -= 1
+        return temp
+
 
 my_doubly_linked_list = DoublyLinkedList(3)
 my_doubly_linked_list.append(6)
 my_doubly_linked_list.pop()
 my_doubly_linked_list.prepend(8)
+my_doubly_linked_list.pop_first()
 my_doubly_linked_list.print_list()
+
+# Conclusions:
+# 1. If wanting to add an item to the list:
+# (1) Consider 2 scenarios: self.length == 0; general
+# (2) Always remember to create a new node
+# 2. If wanting to remove an item from the list:
+# (1) Consider 3 scenarios: self.length == 0; self.length == 1; general
