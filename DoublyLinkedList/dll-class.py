@@ -80,13 +80,33 @@ class DoublyLinkedList:
         self.length -= 1
         return temp
 
+    def get(self, index):
+        " Return the node at the index "
+        if index < 0 or index > (self.length - 1):
+            return None
+        if index < self.length/2:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):  # Iteration starts from the last item; decrement by one in each loop
+                temp = temp.prev
+        return temp.value
+
 
 my_doubly_linked_list = DoublyLinkedList(3)
 my_doubly_linked_list.append(6)
 my_doubly_linked_list.pop()
 my_doubly_linked_list.prepend(8)
 my_doubly_linked_list.pop_first()
-my_doubly_linked_list.print_list()
+my_doubly_linked_list.append(3)
+my_doubly_linked_list.append(4)
+my_doubly_linked_list.append(5)
+my_doubly_linked_list.append(6)
+my_doubly_linked_list.append(7)
+print(my_doubly_linked_list.get(3))
+# my_doubly_linked_list.print_list()
 
 # Conclusions:
 # 1. If wanting to add an item to the list:
