@@ -23,7 +23,7 @@ class Queue:
             temp = temp.next
 
     def enqueue(self, value):  # Equivalent to 'append'
-        " Add an item to (the end og the) queue "
+        " Add an item to (the end of the) queue "
         new_node = Node(value)
         if self.first is None:
             self.first = new_node
@@ -34,7 +34,18 @@ class Queue:
             self.last = new_node
             self.length += 1
 
+    def dequeue(self):  # Equivalent to 'pop_first'
+        " Remove an item from the (start of the) queue & return it "
+        if self.first is None:
+            return None
+        temp = self.first
+        self.first = self.first.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.last = None
+        return temp.value
+
 
 my_queue = Queue(2)
-my_queue.enqueue(4)
-my_queue.print_queue()
+print(my_queue.dequeue())
