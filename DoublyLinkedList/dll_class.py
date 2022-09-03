@@ -67,7 +67,7 @@ class DoublyLinkedList:
     def pop_first(self):
         " Remove the first item from the list & return it "
         if self.length == 0:
-            return None  # function ends here
+            return None  # method ends here
         temp = self.head
         if self.length == 1:
             self.head = None

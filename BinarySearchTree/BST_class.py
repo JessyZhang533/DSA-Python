@@ -23,12 +23,12 @@ class BinarySearchTree:
             if new_node.value < temp.value:  # Go left
                 if temp.left is None:
                     temp.left = new_node
-                    return True  # To end the function
+                    return True  # To end the method
                 temp = temp.left
             else:  # Go right
                 if temp.right is None:
                     temp.right = new_node
-                    return True  # To end the function
+                    return True  # To end the method
                 temp = temp.right
 
     def contain(self, value):  # Don't need to separate any edge case
@@ -60,5 +60,5 @@ print(my_tree.min_value_node(my_tree.root))
 
 # Conclusion:
 # 1. Use while loop instead of for loop when you don't know the exact number of iterations
-# 2. If the function should stop executing under some condition, use 'return ...' instead of an if statement
-# 3. If there's only 'return...'as the output of a function, we need to use 'print' to visualise the output
+# 2. If the function/method should stop executing under some condition, use 'return ...' instead of an if statement
+# 3. If there's only 'return...'as the output of a function/method, we need to use 'print' to visualise the output
