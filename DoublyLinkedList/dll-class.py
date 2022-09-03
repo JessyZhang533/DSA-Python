@@ -107,7 +107,7 @@ class DoublyLinkedList:
         if index < 0 or index > self.length:
             return False
         if index == 0:  # Reuse function
-            return self.prepend(value)
+            return self.prepend(value)  # Just 'value' in the bracket, like we use it outside of the body og this 'class'
         if index == self.length:  # Reuse function
             return self.append(value)
         new_node = Node(value)
@@ -118,6 +118,22 @@ class DoublyLinkedList:
         before.next = new_node
         after.prev = new_node
         self.length += 1
+        return True
+
+    def remove(self, index):
+        " Remove the item at the given index "
+        if index < 0 or index > self.length - 1:
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        temp = self.get(index)
+        temp.next.prev = temp.prev
+        temp.prev.next = temp.next  # These two lines: connect temp.prev to temp.next
+        temp.next = None
+        temp.prev = None  # These two lines: disconnect node 'temp' from the list
+        self.length -= 1
         return True
 
 
@@ -134,6 +150,7 @@ my_doubly_linked_list.append(7)
 print(my_doubly_linked_list.get(3))
 my_doubly_linked_list.set_value(1, 8)
 my_doubly_linked_list.insert(4, 9)
+my_doubly_linked_list.remove(3)
 my_doubly_linked_list.print_list()
 
 # Conclusions:
