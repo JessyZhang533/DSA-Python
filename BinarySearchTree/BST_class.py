@@ -31,13 +31,27 @@ class BinarySearchTree:
                     return True  # To end the function
                 temp = temp.right
 
+    def contain(self, value):  # Don't need to separate any edge case
+        " See if a value exist in the tree "
+        temp = self.root
+        while temp:
+            if value == temp.value:
+                return True  # The value IS in the tree
+            if value < temp.value:
+                temp = temp.left
+            else:
+                temp = temp.right
+        return False  # If iterates until temp is None, return False
+
 
 my_tree = BinarySearchTree()
 my_tree.insert(2)
 my_tree.insert(1)
 my_tree.insert(3)
 print(my_tree.root.left.value)  # Should be 1
+print(my_tree.contain(4))  # Returns nothing without 'print'!
 
 # Conclusion:
 # 1. Use while loop instead of for loop when you don't know the exact number of iterations
 # 2. If the function should stop executing under some condition, use 'return ...' instead of an if statement
+# 3. If there's only 'return...'as the output of a function, we need to use 'print' to visualise the output
