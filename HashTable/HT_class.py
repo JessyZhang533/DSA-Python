@@ -22,6 +22,16 @@ class HashTable:
             # i: the address
             # val: the item/key-value pair at the address
 
+    def set_item(self, key, value):
+        " Pass two arguemnts as shown, create a key-value pair & output an address, then store the pair in a list at the address "
+        index = self.__hash(key)
+        if self.data_map[index] is None:
+            self.data_map[index] = []  # Create the list at the address if it hasn't been created before
+        self.data_map[index].append([key, value])  # Add the pair to the list at the address
+
 
 my_hash_table = HashTable()
+my_hash_table.set_item('bolts', 1400)
+my_hash_table.set_item('washers', 50)
+my_hash_table.set_item('lumber', 70)
 my_hash_table.print_table()
