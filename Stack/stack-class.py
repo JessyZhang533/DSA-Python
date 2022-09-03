@@ -22,6 +22,18 @@ class Stack:
             print(temp.value)
             temp = temp.next
 
+    def push(self, value):  # Equivalent to 'prepend'
+        " Add an item to the (top of the) stack "
+        new_node = Node(value)
+        if self.top is None:
+            self.top = new_node
+            self.height = 1
+        else:
+            new_node.next = self.top
+            self.top = new_node
+            self.height += 1
+
 
 my_stack = Stack(4)
+my_stack.push(1)
 my_stack.print_stack()
