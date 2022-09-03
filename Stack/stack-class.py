@@ -33,7 +33,18 @@ class Stack:
             self.top = new_node
             self.height += 1
 
+    def pop(self):  # Equivalent to 'pop_first'
+        " Remove an item from the (top of the) stack & return it "
+        if self.top is None:
+            return None
+        temp = self.top
+        self.top = self.top.next
+        temp.next = None
+        self.height -= 1
+        return temp
+
 
 my_stack = Stack(4)
 my_stack.push(1)
+my_stack.pop()
 my_stack.print_stack()
