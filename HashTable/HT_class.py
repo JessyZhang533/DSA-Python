@@ -29,9 +29,19 @@ class HashTable:
             self.data_map[index] = []  # Create the list at the address if it hasn't been created before
         self.data_map[index].append([key, value])  # Add the pair to the list at the address
 
+    def get_item(self, key):
+        " Pass the key as an arguemnt, return the value associated with it "
+        index = self.__hash(key)  # Figure out the address
+        if self.data_map[index] is not None:
+            for i in self.data_map[index]:
+                if i[0] == key:
+                    return i[1]  # Return the value
+        return None
+
 
 my_hash_table = HashTable()
 my_hash_table.set_item('bolts', 1400)
 my_hash_table.set_item('washers', 50)
 my_hash_table.set_item('lumber', 70)
-my_hash_table.print_table()
+print(my_hash_table.get_item('lumber'))
+# my_hash_table.print_table()
