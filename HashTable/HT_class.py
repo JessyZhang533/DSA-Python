@@ -1,4 +1,6 @@
+# Here we create hashtables with nested lists
 # Should always have a prime number of addresses: increases the randomness of distribution & reduces collisions.
+# We treat hash tables, which are implemented as dictionaries in Python, as O(1). (_hash, set_item, get_item)
 
 class HashTable:
     def __init__(self, size=7):  # '...=...': set the default value if not passing an argument
@@ -16,7 +18,7 @@ class HashTable:
             return my_hash
 
     def print_table(self):
-        " Print items in the hash table one by one "
+        " Show Hash Table "
         for i, val in enumerate(self.data_map):  # enumerate: https://www.programiz.com/python-programming/methods/built-in/enumerate
             print(i, ": ", val)
             # i: the address
@@ -54,4 +56,4 @@ my_hash_table.set_item('washers', 50)
 my_hash_table.set_item('lumber', 70)
 # print(my_hash_table.get_item('lumber'))
 print(my_hash_table.keys())
-# my_hash_table.print_table()
+my_hash_table.print_table()
