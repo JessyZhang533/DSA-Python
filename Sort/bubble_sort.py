@@ -22,3 +22,6 @@ def bubble_sort_2(my_list):  # New version using decreasing for loop & pointer
 my_list = [19, 8, 10, 7, 1, 2]
 print(bubble_sort_1(my_list))
 print(bubble_sort_2(my_list))
+
+# t.c.=O(n^2)
+# s.c.=O(1)

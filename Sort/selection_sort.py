@@ -15,3 +15,5 @@ my_list = [19, 8, 10, 7, 1, 2]
 print(selection_sort(my_list))
 
 # Figured this out entirely by myself yayyyyy
+# t.c.=O(n^2)
+# s.c.=O(1)
