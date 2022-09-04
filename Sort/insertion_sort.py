@@ -23,4 +23,3 @@ def insertion_sort_2(my_list):  # udemy version
 my_list = [19, 8, 10, 7, 1, 2]
 print(insertion_sort_1(my_list))
 print(insertion_sort_2(my_list))
-
