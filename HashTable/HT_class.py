@@ -38,10 +38,20 @@ class HashTable:
                     return i[1]  # Return the value
         return None
 
+    def keys(self):
+        " Encapsulate all keys into a list & return it "
+        keys_list = []
+        for i in range(len(self.data_map)):
+            if self.data_map[i] is not None:
+                for j in self.data_map[i]:
+                    keys_list.append(j[0])
+        return keys_list
+
 
 my_hash_table = HashTable()
 my_hash_table.set_item('bolts', 1400)
 my_hash_table.set_item('washers', 50)
 my_hash_table.set_item('lumber', 70)
-print(my_hash_table.get_item('lumber'))
+# print(my_hash_table.get_item('lumber'))
+print(my_hash_table.keys())
 # my_hash_table.print_table()
