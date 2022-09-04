@@ -17,7 +17,17 @@ class Graph:
         for vertex in self.adj_list:
             print(vertex, ": ", self.adj_list[vertex])
 
+    def add_edge(self, v1, v2):
+        " Connect two vertices with an edge "
+        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():  # Check if the vertex id in the graph
+            self.adj_list[v1].append(v2)  # '.append()'
+            self.adj_list[v2].append(v1)
+            return True
+        return False  # At least one of the vertices is not in the graph
+
 
 my_graph = Graph()
 my_graph.add_vertex('A')
+my_graph.add_vertex('B')
+my_graph.add_edge('A', 'B')
 my_graph.print_graph()
