@@ -62,6 +62,21 @@ class BinarySearchTree:
                 queue.append(current_node.left)
             if current_node.right:  # Add nodes of the next row to 'queue'
                 queue.append(current_node.right)
+        return result_list  # The structure of this list is like rows of the original tree stacked together
+
+    def dfs_pre_order(self):
+        " Traverse nodes downwards to the bottom from left to right, store their values in a list & return the list "
+        result_list = []
+
+        def traverse(current_node):  # A function inside a method
+            " A recursive function governing the rules of traversing "
+            result_list.append(current_node.value)
+            if current_node.left is not None:  # This goes all the way down to the left
+                traverse(current_node.left)
+            if current_node.right is not None:  # This goes all the way down to the right
+                traverse(current_node.right)
+
+        traverse(self.root)
         return result_list
 
 
@@ -69,10 +84,15 @@ my_tree = BinarySearchTree()
 my_tree.insert(2)
 my_tree.insert(1)
 my_tree.insert(3)
-print(my_tree.root.left.value)  # Should be 1
-print(my_tree.contain(4))  # Returns nothing without 'print'!
-print(my_tree.min_value_node(my_tree.root))
+my_tree.insert(-89)
+my_tree.insert(-8)
+my_tree.insert(7)
+my_tree.insert(36)
+# print(my_tree.root.left.value)  # Should be 1
+# print(my_tree.contain(4))  # Returns nothing without 'print'!
+# print(my_tree.min_value_node(my_tree.root))
 print(my_tree.BFS())
+print(my_tree.dfs_pre_order())
 
 # Conclusion:
 # 1. Use while loop instead of for loop when you don't know the exact number of iterations
