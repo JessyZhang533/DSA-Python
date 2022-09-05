@@ -1,4 +1,7 @@
 # Sort the list by breaking down, sorting smaller lists & combining
+# 1. Break the list in half using recursion
+# 2. Base case: len(smaller_list) == 1
+# 3. use merge() to combine
 
 
 def merge(list1, list2):
@@ -24,4 +27,15 @@ def merge(list1, list2):
     return combine
 
 
+def merge_sort(my_list):
+    " Break the list in half; combine sorted lists "
+    if len(my_list) == 1:  # base case
+        return my_list
+    mid = int(len(my_list)/2)  # 'int': if the value is 1.5, 'int' turns it into 1
+    left_of_list = my_list[:mid]  # Slicing: up to and not including my_list[mid]
+    right_of_list = my_list[mid:]  # Slicing: from and including my_list[mid]
+    return merge(merge_sort(left_of_list), merge_sort(right_of_list))
+
+
 print(merge([1, 4, 7, 8], [3, 5]))
+print(merge_sort([9, 3, 5, 1, 6, 7, 8, 0]))
