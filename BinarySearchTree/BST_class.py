@@ -79,6 +79,21 @@ class BinarySearchTree:
         traverse(self.root)
         return result_list
 
+    def dfs_post_order(self):
+        " Traverse down to bottom without storing, store values of nodes (in a list) from bottom to top, left to right & return the list  "
+        result_list = []
+
+        def traverse(current_node):
+            " A recursive function governing the rules of traversing "
+            if current_node.left is not None:
+                traverse(current_node.left)
+            if current_node.right is not None:
+                traverse(current_node.right)
+            result_list.append(current_node.value)
+
+        traverse(self.root)
+        return result_list
+
 
 my_tree = BinarySearchTree()
 my_tree.insert(2)
@@ -93,9 +108,11 @@ my_tree.insert(36)
 # print(my_tree.min_value_node(my_tree.root))
 print(my_tree.BFS())
 print(my_tree.dfs_pre_order())
+print(my_tree.dfs_post_order())
 
 # Conclusion:
 # 1. Use while loop instead of for loop when you don't know the exact number of iterations
 # 2. If the function/method should stop executing under some condition, use 'return ...' instead of an if statement
 # 3. If there's only 'return...'as the output of a function/method, we need to use 'print' to visualise the output
 # 4. Pop method for lists: '.pop(index)'
+# 5. For BFS & DFS methods, remember to use 'call stack' to improve understanding. An input is removed from the call stack once it has gone thru every line of the method/function
