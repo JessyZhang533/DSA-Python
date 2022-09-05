@@ -94,6 +94,21 @@ class BinarySearchTree:
         traverse(self.root)
         return result_list
 
+    def dfs_in_order(self):
+        " Store values of nodes in a list and return it. The final list looks like the original tree being squashed "
+        result_list = []
+
+        def traverse(current_node):
+            " A recursive function governing the rules of traversing "
+            if current_node.left is not None:
+                traverse(current_node.left)
+            result_list.append(current_node.value)
+            if current_node.right is not None:
+                traverse(current_node.right)
+
+        traverse(self.root)
+        return result_list
+
 
 my_tree = BinarySearchTree()
 my_tree.insert(2)
@@ -109,6 +124,7 @@ my_tree.insert(36)
 print(my_tree.BFS())
 print(my_tree.dfs_pre_order())
 print(my_tree.dfs_post_order())
+print(my_tree.dfs_in_order())
 
 # Conclusion:
 # 1. Use while loop instead of for loop when you don't know the exact number of iterations
