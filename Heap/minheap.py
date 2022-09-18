@@ -1,4 +1,4 @@
-# Min Heap:parent 
+# Min Heap:
 # 1.Basically a complete tree. Must be filled from left to right and every level must be full, with the exception of the last level not needing to be full.
 # 2.'Min':every parent's key must be smaller than its children node.
 
@@ -63,5 +63,10 @@ class MinHeap:
             raise("The heap is full. Cannot insert")
         self.values[self.size] = data
         self.size += 1
-        self.HeapUp()
+        self.HeapifyUp(self.size - 1)  # In the bracket is the index of the newly inserted item
 
+    def HeapifyUp(self, index):
+        " Compare the value of the newly inserted to that of its parent; swap them if needed "
+        if (self.hasParent(index) and self.value_parent(index) > self.values[index]):
+            self.swap(self.getParentIndex(index), index)
+            self.HeapifyUp(self.getParentIndex(index))  # Recursion
