@@ -55,8 +55,8 @@ class MinHeap:
         temp = self.values[index1]
         self.values[index1] = self.values[index2]
         self.values[index2] = temp
-    # Helper methods end
 
+    # Insertion
     def insert(self, data):
         " Insert a new node into the heap "
         if self.isFull():
@@ -70,3 +70,23 @@ class MinHeap:
         if (self.hasParent(index) and self.value_parent(index) > self.values[index]):
             self.swap(self.getParentIndex(index), index)
             self.HeapifyUp(self.getParentIndex(index))  # Recursion
+
+    # Removal
+    def remove(self):
+        " Remove the minimum from the heap and return it "
+        if self.size == 0:
+            raise("Empty Heap.Cannot remove")
+        data = self.values[0]
+        self.values[0] == self.values[self.size - 1]  # Let the item last inserted be the head
+        self.size -= 1
+        self.HeapifyDown(0)
+        return data
+
+    def HeapifyDown(self, index):
+        " Compare the value of the newly inserted to that of its children; swap them if needed "
+        if (self.hasLeftChild(index) and self.values[index] > self.value_leftchild(index)):
+            self.swap(self.getLeftChildIndex(index), index)
+            self.HeapifyDown(self.getLeftChildIndex(index))
+        if (self.hasRightChild(index) and self.values[index] > self.value_rightchild(index)):
+            self.swap(self.getRightChildIndex(index), index)
+            self.HeapifyDown(self.getRightChildIndex(index))
