@@ -9,7 +9,7 @@ class MinHeap:
         self.capacity = capacity
         self.size = 0  # The number of elements stored in the heap
 
-
+    # Helper methods
     def getParentIndex(self, index):
         " Given the index of a node, return the index of its parent "
         return (index - 1)//2
@@ -21,7 +21,6 @@ class MinHeap:
     def getRightChildIndex(self, index):
         " Given the index of a node, return the index of its right child "
         return index * 2 + 2
-
 
     def hasParent(self, index):
         " Check if a given node has a parent "
@@ -35,7 +34,6 @@ class MinHeap:
         " Check if a given node has a right child "
         return self.getRightChildIndex(index) < self.size  # This is a boolean: True or False
 
-
     def value_parent(self, index):
         " Given the index of a node, return the value of its parent "
         return self.values[self.getParentIndex(index)]
@@ -48,7 +46,6 @@ class MinHeap:
         " Given the index of a node, return the value of its right child "
         return self.values[self.getRightChildIndex(index)]
 
-
     def isFull(self):
         " See if there is still room for insertion "
         return self.size == self.capacity
@@ -58,3 +55,13 @@ class MinHeap:
         temp = self.values[index1]
         self.values[index1] = self.values[index2]
         self.values[index2] = temp
+    # Helper methods end
+
+    def insert(self, data):
+        " Insert a new node into the heap "
+        if self.isFull():
+            raise("The heap is full. Cannot insert")
+        self.values[self.size] = data
+        self.size += 1
+        self.HeapUp()
+
