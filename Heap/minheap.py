@@ -5,6 +5,56 @@
 class MinHeap:
     def __init__(self, capacity):
         " Constructor "
-        self.storage = [0] * capacity
+        self.values = [0] * capacity  # Store the values of each node
         self.capacity = capacity
         self.size = 0  # The number of elements stored in the heap
+
+
+    def getParentIndex(self, index):
+        " Given the index of a node, return the index of its parent "
+        return (index - 1)//2
+
+    def getLeftChildIndex(self, index):
+        " Given the index of a node, return the index of its left child "
+        return index * 2 + 1
+
+    def getRightChildIndex(self, index):
+        " Given the index of a node, return the index of its right child "
+        return index * 2 + 2
+
+
+    def hasParent(self, index):
+        " Check if a given node has a parent "
+        return self.getParentIndex(index) < self.size  # This is a boolean: True or False
+
+    def hasLeftChild(self, index):
+        " Check if a given node has a left child "
+        return self.getLeftChildIndex(index) < self.size  # This is a boolean: True or False
+
+    def hasRightChild(self, index):
+        " Check if a given node has a right child "
+        return self.getRightChildIndex(index) < self.size  # This is a boolean: True or False
+
+
+    def value_parent(self, index):
+        " Given the index of a node, return the value of its parent "
+        return self.values[self.getParentIndex(index)]
+
+    def value_leftchild(self, index):
+        " Given the index of a node, return the value of its left child "
+        return self.values[self.getLeftChildIndex(index)]
+
+    def value_rightchild(self, index):
+        " Given the index of a node, return the value of its right child "
+        return self.values[self.getRightChildIndex(index)]
+
+
+    def isFull(self):
+        " See if there is still room for insertion "
+        return self.size == self.capacity
+
+    def swap(self, index1, index2):
+        " Swap two nodes "
+        temp = self.values[index1]
+        self.values[index1] = self.values[index2]
+        self.values[index2] = temp
