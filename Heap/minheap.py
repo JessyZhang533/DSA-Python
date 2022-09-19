@@ -1,6 +1,7 @@
-# Min Heap:
+# Heap:
 # 1.Basically a complete tree. Must be filled from left to right and every level must be full, with the exception of the last level not needing to be full.
-# 2.'Min':every parent's key must be smaller than its children node.
+# 2.'Min':every parent's key must be smaller than its children node. 'Max': vice versa
+# 3.The element removed should always be the root (the item on top of a real heap)
 
 class MinHeap:
     def __init__(self, capacity):
@@ -56,7 +57,7 @@ class MinHeap:
         self.values[index1] = self.values[index2]
         self.values[index2] = temp
 
-    # Insertion
+    # Insertion--time complexity: O(logn)
     def insert(self, data):
         " Insert a new node into the heap "
         if self.isFull():
@@ -71,7 +72,7 @@ class MinHeap:
             self.swap(self.getParentIndex(index), index)
             self.HeapifyUp(self.getParentIndex(index))  # Recursion
 
-    # Removal
+    # Removal--time complexity: O(logn)
     def remove(self):
         " Remove the minimum from the heap and return it "
         if self.size == 0:
@@ -90,3 +91,4 @@ class MinHeap:
         if (self.hasRightChild(index) and self.values[index] > self.value_rightchild(index)):
             self.swap(self.getRightChildIndex(index), index)
             self.HeapifyDown(self.getRightChildIndex(index))
+
