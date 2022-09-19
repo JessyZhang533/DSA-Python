@@ -1,6 +1,6 @@
-# Heap:
+# Min Heap:
 # 1.Basically a complete tree. Must be filled from left to right and every level must be full, with the exception of the last level not needing to be full.
-# 2.'Min':every parent's key must be smaller than its children node. 'Max': vice versa
+# 2.'Min':every parent must be smaller than its children.
 # 3.The element removed should always be the root (the item on top of a real heap)
 
 class MinHeap:
@@ -10,7 +10,7 @@ class MinHeap:
         self.capacity = capacity
         self.size = 0  # The number of elements stored in the heap
 
-    # Helper methods
+    # Helper methods (same as max heap)
     def getParentIndex(self, index):
         " Given the index of a node, return the index of its parent "
         return (index - 1)//2
@@ -92,3 +92,15 @@ class MinHeap:
             self.swap(self.getRightChildIndex(index), index)
             self.HeapifyDown(self.getRightChildIndex(index))
 
+
+# Heap sort--O(nlogn)
+def Heap_sort(list):
+    " Sort a list of values from largest to smallest using the concept of heap "
+    list_heap = MinHeap(len(list))
+    list_sorted = []
+    for i in list:  # O(logn)
+        list_heap.insert(i)
+    for _ in range(len(list_heap)):
+        item_removed = list_heap.remove()
+        list_sorted.append(item_removed)
+    return list_sorted
