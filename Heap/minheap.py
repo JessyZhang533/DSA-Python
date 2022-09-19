@@ -3,6 +3,7 @@
 # 2.'Min':every parent must be smaller than its children.
 # 3.The element removed should always be the root (the item on top of a real heap)
 
+
 class MinHeap:
     def __init__(self, capacity):
         " Constructor "
@@ -57,6 +58,10 @@ class MinHeap:
         self.values[index1] = self.values[index2]
         self.values[index2] = temp
 
+    def print(self):
+        " Print heap as a list "
+        print(self.values)
+
     # Insertion--time complexity: O(logn)
     def insert(self, data):
         " Insert a new node into the heap "
@@ -78,29 +83,36 @@ class MinHeap:
         if self.size == 0:
             raise("Empty Heap.Cannot remove")
         data = self.values[0]
-        self.values[0] == self.values[self.size - 1]  # Let the item last inserted be the head
+        self.values[0] = self.values[self.size - 1]  # Let the item last inserted be the head
         self.size -= 1
         self.HeapifyDown(0)
         return data
 
     def HeapifyDown(self, index):
         " Compare the value of the newly inserted to that of its children; swap them if needed "
+        smallest = index
         if (self.hasLeftChild(index) and self.values[index] > self.value_leftchild(index)):
-            self.swap(self.getLeftChildIndex(index), index)
-            self.HeapifyDown(self.getLeftChildIndex(index))
+            smallest = self.getLeftChildIndex(index)
         if (self.hasRightChild(index) and self.values[index] > self.value_rightchild(index)):
-            self.swap(self.getRightChildIndex(index), index)
-            self.HeapifyDown(self.getRightChildIndex(index))
+            smallest = self.getRightChildIndex(index)
+        if smallest != index:
+            self.swap(smallest, index)
+            self.HeapifyDown(smallest)
 
 
 # Heap sort--O(nlogn)
 def Heap_sort(list):
-    " Sort a list of values from largest to smallest using the concept of heap "
+    " Sort a list of values from smallest to largest using the concept of heap "
     list_heap = MinHeap(len(list))
     list_sorted = []
     for i in list:  # O(logn)
         list_heap.insert(i)
-    for _ in range(len(list_heap)):
+    for _ in range(len(list)):
         item_removed = list_heap.remove()
+        list_heap.print()
         list_sorted.append(item_removed)
     return list_sorted
+
+
+my_list = [60, 35, 47, 59, 1, 3]
+print(Heap_sort(my_list))
