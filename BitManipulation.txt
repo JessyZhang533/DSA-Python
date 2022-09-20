@@ -1,0 +1,39 @@
+1. How an integer is represented in a computer
+
+(1) Binary
+
+(2) Two's complement
+first digit indicating positive/negetive: positive--0, negative--1;
+eg. 18: 0 0010010
+   -18: 1 1101110 (digits after the first one are complementary)
+
+(3) Shifting
+[Common Cases]
+left shift: multiply by 2 for base 10
+right shift: divide by 2 for base 10, round down
+eg. 23: 0 0010111
+    46: 0 0101110
+    11: 0 0001011
+[Special Cases]
+For right shift: logical & arithmetic
+logical: just shift and replace empty digit with 0 (common way)
+arithmetic: shift as usual but doesn't change the first digit (doesn't change the sign)
+eg. -23: 1 1101001
+    116: 0 1110100 (logical)
+    -12: 1 1110100 (arithmetic)
+
+(4) Masks (x is the mask, baiscally a tool-like number to assist us acheive our purpose)
+[Basics]
+&: 0&0=0, 0&1=0, 1&1=1
+|: 0|0=0, 0|1=1, 1|1=1
+^: 0^0=0, 0^1=1, 1^1=0
+[Get ith bit]
+(x&(1<<i)) != 0, then the ith bit is 1
+[Set ith bit]
+x|(1<<i), then the ith bit is set to 1
+[Clear ith bit]
+x&(~1<<i)
+
+*Notations:
+1. 1<<i: a binary number whose ith digit is 1 and all others are 0
+2. ~: invert
