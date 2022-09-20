@@ -26,7 +26,7 @@ class MinHeap:
 
     def hasParent(self, index):
         " Check if a given node has a parent "
-        return self.getParentIndex(index) < self.size  # This is a boolean: True or False
+        return self.getParentIndex(index) >= 0  # This is a boolean: True or False
 
     def hasLeftChild(self, index):
         " Check if a given node has a left child "
