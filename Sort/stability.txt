@@ -1,0 +1,20 @@
+Stability in sorting algorithms  https://www.youtube.com/watch?v=KJuxI1BBLyQ
+
+1. What is stability:
+Say we have two identical values in the original list, denoted as value-1 and value-2 (1 and 2 indicates which one is first inserted).
+Now we apply a sorting algorithms to the list.
+After sorting, if value-1 is still placed before value-2, we say the sorting algorithm is stable. Otherwise it is unstable.
+
+2. What makes a sorting algorithm unstable:
+Swaps of non-adjacent elements.
+Merge, Insertion, Counting Sort: no swaps --> stable
+Bubble Sort: Only adjacent swaps --> stable
+Quick, Heap, Selection Sort: unstable
+
+3. Impossibility trinity for comparison sorts:
+(1) time complexity O(nlogn); (2) extra space O(1); (3) Stability
+One sorting algorithm can only satisfy two of the three.
+(1)(2): Quick, Heap Sort
+(1)(3): Merge Sort
+(2)(3): Insertion, Bubble Sort
+(2): Selection Sort (n shifts replaced by 1 swap as an optimisation)
