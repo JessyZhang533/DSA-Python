@@ -25,7 +25,7 @@ class MaxHeap:
 
     def hasParent(self, index):
         " Check if a given node has a parent "
-        return self.getParentIndex(index) < self.size  # This is a boolean: True or False
+        return self.getParentIndex(index) >= 0  # This is a boolean: True or False
 
     def hasLeftChild(self, index):
         " Check if a given node has a left child "
@@ -57,6 +57,10 @@ class MaxHeap:
         self.values[index1] = self.values[index2]
         self.values[index2] = temp
 
+    def print(self):
+        " Print heap as a list "
+        print(self.values)
+
     # Insertion--time complexity: O(logn)
     def insert(self, data):
         " Insert a new node into the heap "
@@ -76,18 +80,38 @@ class MaxHeap:
     def remove(self):
         " Remove the minimum from the heap and return it "
         if self.size == 0:
-            raise("Empty Heap.Cannot remove")
+            return "Empty Heap.Cannot remove"
         data = self.values[0]
-        self.values[0] == self.values[self.size - 1]  # Let the item last inserted be the head
+        self.values[0] = self.values[self.size - 1]  # Let the item last inserted be the head
+        self.values.pop(self.size - 1)  # Reduce the length of the heap list. pop() is O(1)
         self.size -= 1
         self.HeapifyDown(0)
         return data
 
     def HeapifyDown(self, index):
         " Compare the value of the newly inserted to that of its children; swap them if needed "
-        if (self.hasLeftChild(index) and self.values[index] < self.value_leftchild(index)):
-            self.swap(self.getLeftChildIndex(index), index)
-            self.HeapifyDown(self.getLeftChildIndex(index))
-        if (self.hasRightChild(index) and self.values[index] < self.value_rightchild(index)):
-            self.swap(self.getRightChildIndex(index), index)
-            self.HeapifyDown(self.getRightChildIndex(index))
+        largest = index
+        if (self.hasLeftChild(index) and self.values[largest] < self.value_leftchild(index)):
+            largest = self.getLeftChildIndex(index)
+        if (self.hasRightChild(index) and self.values[largest] < self.value_rightchild(index)):
+            largest = self.getRightChildIndex(index)
+        if largest != index:
+            self.swap(largest, index)  # The above few lines: for three nodes: parent and its two children, compare and put the smallest value at the parent position
+            self.HeapifyDown(largest)
+
+
+# Heap sort--O(nlogn)
+def Heap_sort(list):
+    " Sort a list of values from largest to smallest using the concept of heap "
+    list_heap = MaxHeap(len(list))
+    list_sorted = []
+    for i in list:  # O(logn)
+        list_heap.insert(i)
+    for _ in range(len(list)):
+        item_removed = list_heap.remove()
+        list_sorted.append(item_removed)
+    return list_sorted
+
+
+my_list = [60, 35, 47, 59, 1, 3]
+print(Heap_sort(my_list))
