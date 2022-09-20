@@ -2,7 +2,7 @@
 # 1. Break the list in half using recursion --> time complexity O(logn)
 # 2. Base case: len(smaller_list) == 1
 # 3. use merge() to combine --> time complexity O(n)
-# spce complexity: O(n)
+# space complexity: O(n)
 # time complexity: O(nlogn)
 
 
