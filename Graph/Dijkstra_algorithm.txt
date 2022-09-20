@@ -1,0 +1,8 @@
+1. Basically a 'shortest path' solution based on Graph
+2. Relaxation: (u, v are vertices)
+    if distance[u] > distance[v] + edge[u, v]:
+        distance[u] = distance[v] + edge[u, v]
+3. Time complexity: worst O(n^2)
+
+https://www.youtube.com/watch?v=XB4MIexjvY0
+examples start from 9:40

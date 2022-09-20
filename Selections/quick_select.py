@@ -4,7 +4,7 @@
 # An improvement from sort_then_select()
 
 def quick_select(list, k):
-    " Return the kth smallest eleent using divide and conquer "
+    " Return the kth smallest element using divide and conquer "
 
     def partition(pivot_index, end_index):
         " Set pivot and divide a list into two parts "
