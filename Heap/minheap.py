@@ -66,7 +66,7 @@ class MinHeap:
     def insert(self, data):
         " Insert a new node into the heap "
         if self.isFull():
-            raise("The heap is full. Cannot insert")
+            return "The heap is full. Cannot insert"
         self.values[self.size] = data
         self.size += 1
         self.HeapifyUp(self.size - 1)  # In the bracket is the index of the newly inserted item
@@ -81,9 +81,10 @@ class MinHeap:
     def remove(self):
         " Remove the minimum from the heap and return it "
         if self.size == 0:
-            raise("Empty Heap.Cannot remove")
+            return "Empty Heap.Cannot remove"
         data = self.values[0]
         self.values[0] = self.values[self.size - 1]  # Let the item last inserted be the head
+        self.values.pop(self.size - 1)  # Reduce the length of the heap list. pop() is O(1)
         self.size -= 1
         self.HeapifyDown(0)
         return data
@@ -91,12 +92,12 @@ class MinHeap:
     def HeapifyDown(self, index):
         " Compare the value of the newly inserted to that of its children; swap them if needed "
         smallest = index
-        if (self.hasLeftChild(index) and self.values[index] > self.value_leftchild(index)):
+        if (self.hasLeftChild(index) and self.values[smallest] > self.value_leftchild(index)):
             smallest = self.getLeftChildIndex(index)
-        if (self.hasRightChild(index) and self.values[index] > self.value_rightchild(index)):
+        if (self.hasRightChild(index) and self.values[smallest] > self.value_rightchild(index)):
             smallest = self.getRightChildIndex(index)
         if smallest != index:
-            self.swap(smallest, index)
+            self.swap(smallest, index)  # The above few lines: for three nodes: parent and its two children, compare and put the smallest value at the parent position
             self.HeapifyDown(smallest)
 
 
