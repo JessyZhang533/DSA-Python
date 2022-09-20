@@ -1,6 +1,8 @@
+# time complexity: O(nlogn)
+
 def sort_then_select(list, k):
     " Sort the list & index directly; return the kth smallest element in the array "
-    list.sort()
+    list.sort()  # Built-in sort t.c.: O(nlogn)
     return list[k]
 
 
