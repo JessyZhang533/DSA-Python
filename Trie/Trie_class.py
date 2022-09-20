@@ -1,5 +1,9 @@
 # Trie: a data structure storing items (usually strings) based off of the prefixes the items share in common
-# Note: every word is started with a "*", and has an end
+# 1. every word is started with a "*", and has an end
+# 2. Time complexity:
+# search if a word is in a list: O(nm), n-->length of the word, m-->number of words in the list
+# search if a word is in a trie: O(n), n-->length of the word
+# adding a word to a trie: O(n), n-->length of word to be added
 # https://www.youtube.com/watch?v=hjUJFjcrbR4
 
 
