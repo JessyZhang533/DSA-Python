@@ -19,7 +19,7 @@ def subsets_no_duplicate(list):
         subset.append(list[index])
         dfs(index + 1)  # Recursion
         # decision to NOT include list[index]--branch 2
-        subset.pop()
+        subset.pop()  # .pop() default argument is -1
         dfs(index + 1)
     dfs(0)
     return result

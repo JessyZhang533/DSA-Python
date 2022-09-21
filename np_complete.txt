@@ -1,0 +1,23 @@
+Rather than using an exponential deterministic algorithm, we can turn to 
+1.polynomial non-deterministic algorithm
+2.finding relationship with other exponential algorithms
+
+Algorithm classes:
+P -- polynomial time, deterministic
+NP -- polynomial time, non-deterministic
+(P is a subset of NP.)
+
+Base case for exponential algorithms: CNF-Satisfiability
+time complexity O(2**n), logic can be shown by a state space tree (similar to subsets algorithms)
+
+NP-hard: exponential problems
+
+Reduction:
+If Satifiability reduces to any problem, that problem becomes NP-hard as well
+
+NP-complete: any algorithm/problem that has non-deterministic time algorithm
+
+video 28:50 --> relationship between P, NP, NP-hard
+NP-complete id the intersection of NP and NP-hard
+
+To make sure a non-deterministic algorithm will work, we need to prove that P = NP.
