@@ -10,19 +10,19 @@ def subsets(list):
     subset = []
 
     def dfs(index):
-        "  "
-        if index == len(list):  # When all elements have already been accsessed
+        " Take an index as arguement; two branches, one to include list[index] and the other not to "
+        if index == len(list):  # Exit when all elements have already been accsessed
             result.append(subset.copy())
             return
         # decision to include list[index]
         subset.append(list[index])
-        dfs(index + 1)
+        dfs(index + 1)  # Recursion
         # decision to NOT include list[index]
         subset.pop()
         dfs(index + 1)
     dfs(0)
     return result
-        
+ 
 
 my_list = [1, 2, 3]
 print(subsets(my_list))
