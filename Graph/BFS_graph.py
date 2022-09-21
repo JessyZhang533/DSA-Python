@@ -1,5 +1,7 @@
 # Print/Visit every vertices of the graph; traverse the graph by exploring every other vertices connected to one vertex
 # In this algorithm, we will be using the concept of 'Queue'
+# t.c.: O(V+E)
+# s.c.: O(V)
 # Here we implement the graph using adjacent list (a dic)
 
 
