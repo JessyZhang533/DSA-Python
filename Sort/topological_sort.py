@@ -15,4 +15,3 @@ def toppological_sort(graph, num_of_vtx):
             if degree[adj_node] == 0:  # If a node has no unvisited neighbour
                 bfs.append(adj_node)
     return bfs
-    

@@ -1,6 +1,9 @@
 # Here we use adjacent list (a dictionary) to create a graph
+# 1. Directed Graph & Undirected Graph (edges have arrows or not)
+# Undirected: if we have A:['B'], then we must have the inverse path B:['A']
+# https://www.youtube.com/watch?v=amaH38_mXK4
 
-class Graph:
+class Graph:  # This class is Undirected Graph
     def __init__(self):
         " Constructor "
         self.adj_list = {}
