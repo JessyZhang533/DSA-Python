@@ -1,0 +1,16 @@
+Problem description:
+Say we have a X GB log file and a Y GB RAM, where X << Y. We want to sort the log file based on timestamps.
+Note: one can only sort a file when it is tucked in a RAM; impossible to scale the RAM>
+
+Solution (external sort):
+1. Divide the log file into chunks of size X GB (size of RAM)
+2. Sort each chunk in RAM one by one and save in hard drive
+3. Apply technique 'Merge K sorted list'
+
+Time complexity: O(C*SlogS + C*SlogC) -- merge sort on C chunks + merge C sorted lists
+Space comlaxity: O(C)
+C -- number of chunks; number of sorted lists
+S -- numbe rof elements in each chunk
+CS -- total of entries in each file
+
+https://www.youtube.com/watch?v=2qbZKZfs8aA
