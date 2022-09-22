@@ -11,7 +11,7 @@ from collections import defaultdict
 class Graph:
 
     def __init__(self, nodes: int):
-        # The default dictionary would create an empty list as a default (value) 
+        # The default dictionary would create an empty list as a default (value)
         # for the nonexistent keys.
         self.adjlist = defaultdict(list)
         self.nodes = nodes
@@ -51,7 +51,7 @@ class Graph:
 
     # Mark nodes unvisited for the next traversal
     def MarkUnvisited(self):
-        self.visited = [False] * nodes
+        self.visited = [False] * self.nodes
 
     def CyclePresent(self):
         return self.cycle_present
@@ -63,10 +63,10 @@ def main():
     g1_directed = Graph(nodes)
 
     #  Graph 1
-    #  6----------- 
+    #  6-----------
     #  ^          |
     #  |          |
-    #  4<------5<--  
+    #  4<------5<--
     #  ^       ^
     #  |       |
     #  1<------3
@@ -115,7 +115,7 @@ def main():
 
     g2_directed.DetectCycle(0)
 
-    if g2_directed.CyclePresent() == True:
+    if g2_directed.CyclePresent() is True:
         print("Cycle found in the directed graph g2")
     else:
         print("Cycle not found in the directed graph g2")
