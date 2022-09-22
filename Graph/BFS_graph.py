@@ -3,6 +3,7 @@
 # t.c.: O(V+E)
 # s.c.: O(V)
 # Here we implement the graph using adjacent list (a dic)
+# https://www.youtube.com/watch?v=tWVWeAqZ0WU&t=1348s
 
 
 def bfs_graph(graph, node):
@@ -13,8 +14,8 @@ def bfs_graph(graph, node):
     queue.append(node)
     nodes_visited.append(node)
     while queue:
-        m = queue.pop(0)
-        print(m, end=" ")
+        m = queue.pop(0)  # concept of queue: first out
+        print(m, end=" ")  # end=" ": each printed item is separated with a blank
         for adj_node in graph[m]:
             if adj_node not in nodes_visited:
                 queue.append(adj_node)
