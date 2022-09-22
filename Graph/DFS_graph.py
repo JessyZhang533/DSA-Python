@@ -2,7 +2,7 @@
 # In this algorithm, we will be using the concept of 'Stack'
 # t.c.: O(V+E)
 # s.c.: O(V)
-# Here we implement the graph using adjacent list (a dic)
+# Here we implement the graph using adjacency list (a dic)
 # https://www.youtube.com/watch?v=tWVWeAqZ0WU&t=1348s
 
 
