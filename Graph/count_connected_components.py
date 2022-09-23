@@ -1,4 +1,5 @@
 # Input number of vertices and all edges (stored as a list of lists), return number of connected components/chunks
+# A concept for UNDIRECTED graphs
 # https://www.youtube.com/watch?v=Y29g_m96iaI
 
 def count_components(num_of_vtx, edges):
