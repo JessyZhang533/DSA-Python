@@ -4,7 +4,11 @@
 
 
 # Kosaraju's algorithm to find strongly connected components in Python
+# 1.Perform a depth first search on the whole graph.
+# 2.Reverse the original graph.
+# 3.Perform depth-first search on the reversed graph.
 
+# Here vertices = consecutive integers
 
 from collections import defaultdict
 
@@ -13,21 +17,21 @@ class Graph:
 
     def __init__(self, vertex):
         self.V = vertex
-        self.graph = defaultdict(list)
+        self.graph = defaultdict(list)  # https://docs.python.org/3/library/collections.html#collections.defaultdict
 
     # Add edge into the graph
-    def add_edge(self, s, d):
+    def add_edge(self, s, d):  # Edge points from s to d
         self.graph[s].append(d)
 
     # dfs
-    def dfs(self, d, visited_vertex):
+    def dfs(self, d, visited_vertex):  # d is a vertex; Last argument is a list with values being booleans
         visited_vertex[d] = True
-        print(d, end='')
+        print(d, end=' ')
         for i in self.graph[d]:
-            if not visited_vertex[i]:
+            if not visited_vertex[i]:  # If visited_vertex[i] == False
                 self.dfs(i, visited_vertex)
 
-    def fill_order(self, d, visited_vertex, stack):
+    def fill_order(self, d, visited_vertex, stack):  # If a vertex leads to an already visited vertex, then push this vertex to the stack.
         visited_vertex[d] = True
         for i in self.graph[d]:
             if not visited_vertex[i]:
@@ -35,7 +39,7 @@ class Graph:
         stack = stack.append(d)
 
     # transpose the matrix
-    def transpose(self):
+    def transpose(self):  # Reverse the original graph
         g = Graph(self.V)
 
         for i in self.graph:
@@ -52,11 +56,11 @@ class Graph:
             if not visited_vertex[i]:
                 self.fill_order(i, visited_vertex, stack)
 
-        gr = self.transpose()
+        gr = self.transpose()  # reverse graph
 
         visited_vertex = [False] * (self.V)
 
-        while stack:
+        while stack:  # While the stack is not empty
             i = stack.pop()
             if not visited_vertex[i]:
                 gr.dfs(i, visited_vertex)
