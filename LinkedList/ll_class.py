@@ -15,7 +15,6 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
-
     def print_list(self):
         " Print the items in the linked list one by one "
         temp = self.head
@@ -23,21 +22,58 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
-
     def append(self, value):
         " Add an item to the end of the linked list "
+        new_node = Node(value)
+        if self.length == 0:  # Edge case 1
+            self.head = new_node
+            self.tail = new_node
+        self.tail.next = new_node
+        self.tail = self.tail.next
+        self.length += 1
+        return True  # Used in insert()
 
     def pop(self):
         " Remove an item from the end of the linked list and then return this item "
+        if self.head is None:  # Edge case 1
+            return None
+        temp = self.head
+        pre = self.head
+        while temp.next:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:  # Edge case 2
+            self.head = None
+            self.tail = None  # !!!
+        return temp  # temp Or temp.value
 
 
     def prepend(self, value):
         " Add an item to the start of the list "
-
-
+        new_node = Node(value)
+        if self.head is None:  # Edge case 1
+            self.head = new_node
+            self.tail = new_node
+        else:  # !!!
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True  # Used in insert()
 
     def pop_first(self):
         " Remove an item from the start of the linked list and then return this item "
+        if self.head is None:  # Edge case 1
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:  # Edge case 2
+            self.tail = None
+        return temp   # temp Or temp.value
 
 
     def get(self, index):
