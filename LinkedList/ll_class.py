@@ -127,7 +127,7 @@ class LinkedList:
         self.tail = temp  # This line and above: reverse pointers head and tail only
         before = None  # This line and below: reverse every arrow
         for _ in range(self.length):  # 3 pointers moving along: before, temp, after
-            after = temp.next
+            after = temp.next  # CANNOT PUT THIS LINE AFTER THE NEXT LINE: temp.next will change
             temp.next = before  # REVERSE
             before = temp  # Move pointer
             temp = after  # Move pointer
