@@ -55,14 +55,14 @@ class BinarySearchTree:
         queue = []
         result_list = []
         queue.append(current_node)
-        while len(queue) > 0:
-            current_node = queue.pop(0)  # Clear the items in 'queue' one by one
-            result_list.append(current_node.value)  # We need the VALUE not the nodes in the result
-            if current_node.left:  # Add nodes of the next row to 'queue'
-                queue.append(current_node.left)
-            if current_node.right:  # Add nodes of the next row to 'queue'
-                queue.append(current_node.right)
-        return result_list  # The structure of this list is like rows of the original tree stacked together
+        while len(queue) > 0:  # !!!
+            curren_node = queue.pop(0)
+            result_list.append(curren_node.value)
+            if curren_node.left:
+                queue.append(curren_node.left)
+            if curren_node.right:
+                queue.append(curren_node.right)
+        return result_list
 
     def dfs_pre_order(self):
         " Traverse nodes downwards to the bottom from left to right, store their values in a list & return the list "
