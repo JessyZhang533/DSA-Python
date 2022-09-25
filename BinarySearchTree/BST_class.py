@@ -68,12 +68,11 @@ class BinarySearchTree:
         " Traverse nodes downwards to the bottom from left to right, store their values in a list & return the list "
         result_list = []
 
-        def traverse(current_node):  # A function inside a method
-            " A recursive function governing the rules of traversing "
+        def traverse(current_node):
             result_list.append(current_node.value)
-            if current_node.left is not None:  # This goes all the way down to the left
+            if current_node.left:
                 traverse(current_node.left)
-            if current_node.right is not None:  # This goes all the way down to the right
+            if current_node.right:
                 traverse(current_node.right)
 
         traverse(self.root)
@@ -84,10 +83,9 @@ class BinarySearchTree:
         result_list = []
 
         def traverse(current_node):
-            " A recursive function governing the rules of traversing "
-            if current_node.left is not None:
+            if current_node.left:
                 traverse(current_node.left)
-            if current_node.right is not None:
+            if current_node.right:
                 traverse(current_node.right)
             result_list.append(current_node.value)
 
@@ -99,11 +97,10 @@ class BinarySearchTree:
         result_list = []
 
         def traverse(current_node):
-            " A recursive function governing the rules of traversing "
-            if current_node.left is not None:
+            if current_node.left:
                 traverse(current_node.left)
             result_list.append(current_node.value)
-            if current_node.right is not None:
+            if current_node.right:
                 traverse(current_node.right)
 
         traverse(self.root)
