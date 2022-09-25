@@ -11,9 +11,8 @@ class Stack:
     def __init__(self, value):
         " Constructor "
         new_node = Node(value)
-        self.top = new_node  # Equivalent to 'self.head'
-        # self.bottom = None  # Equivalent to 'self.tail', but we don't need this in stack
-        self.height = 1  # Equivalent to 'self.length'
+        self.top = new_node
+        self.height = 1
 
     def print_stack(self):
         " Print item in the stack one by one "
@@ -25,17 +24,16 @@ class Stack:
     def push(self, value):  # Equivalent to 'prepend'
         " Add an item to the (top of the) stack "
         new_node = Node(value)
-        if self.top is None:
+        if self.height == 0:
             self.top = new_node
-            self.height = 1
         else:
             new_node.next = self.top
             self.top = new_node
-            self.height += 1
+        self.height += 1
 
     def pop(self):  # Equivalent to 'pop_first'
         " Remove an item from the (top of the) stack & return it "
-        if self.top is None:
+        if self.height == 0:
             return None
         temp = self.top
         self.top = self.top.next
