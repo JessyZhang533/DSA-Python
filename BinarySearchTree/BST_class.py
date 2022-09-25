@@ -1,53 +1,53 @@
 class Node:
     def __init__(self, value):
         self.value = value
-        self.left = None  # 'Less than' fork
-        self.right = None  # 'Larger than' fork
+        self.left = None
+        self.right = None
 
 
 class BinarySearchTree:
-    def __init__(self):  # Here we do not pass argument 'value' so that an empty BST can be created
+    def __init__(self):
         " Constructor "
-        self.root = None  # The uppermost node that has no parent node
+        self.root = None
 
     def insert(self, value):
         " Insert an item into the tree "
         new_node = Node(value)
-        if self.root is None:  # Edge case 1: original tree is empty
+        if self.root is None:
             self.root = new_node
-            return True  # To end the function
+            return True
         temp = self.root
         while True:
-            if new_node.value == temp.value:  # Edge case 2: new value already existing
+            if new_node.value == temp.value:
                 return False
-            if new_node.value < temp.value:  # Go left
+            if new_node.value < temp.value:
                 if temp.left is None:
                     temp.left = new_node
-                    return True  # To end the method
+                    return True
                 temp = temp.left
-            else:  # Go right
+            if new_node.value > temp.value:
                 if temp.right is None:
                     temp.right = new_node
-                    return True  # To end the method
+                    return True
                 temp = temp.right
 
     def contain(self, value):  # Don't need to separate any edge case
         " See if a value exist in the tree "
         temp = self.root
-        while temp:
+        while temp:  # not 'while True'. Cuz we clearly want to iterate through the whole tree
             if value == temp.value:
-                return True  # The value IS in the tree
+                return True
             if value < temp.value:
                 temp = temp.left
             else:
                 temp = temp.right
-        return False  # If iterates until temp is None, return False
+        return False
 
     def min_value_node(self, current_node):
         " Find & return the child node of minimum value starting from a random node "
-        while current_node.left:
+        while current_node.left:  # while --> iteration, if --> use recursion
             current_node = current_node.left
-        return current_node  # Use current_node.value if wants to return value of node
+        return current_node
 
     def BFS(self):
         " Breadth First Search: traverse nodes row by row, store their values in a list & return the list "
