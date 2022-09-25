@@ -11,8 +11,8 @@ class Queue:
     def __init__(self, value):
         " Constructor "
         new_node = Node(value)
-        self.first = new_node  # Equivalent to 'self.head'
-        self.last = new_node  # Equivalent to 'self.tail'
+        self.first = new_node
+        self.last = new_node
         self.length = 1
 
     def print_queue(self):
@@ -28,11 +28,10 @@ class Queue:
         if self.first is None:
             self.first = new_node
             self.last = new_node
-            self.length = 1
         else:
             self.last.next = new_node
             self.last = new_node
-            self.length += 1
+        self.length += 1
 
     def dequeue(self):  # Equivalent to 'pop_first'
         " Remove an item from the (start of the) queue & return it "
@@ -42,7 +41,7 @@ class Queue:
         self.first = self.first.next
         temp.next = None
         self.length -= 1
-        if self.length == 0:
+        if self.length == 0:  # Here we have edge case 2 cause we have 2 pointers as attributes (compared to Stack)
             self.last = None
         return temp.value
 
