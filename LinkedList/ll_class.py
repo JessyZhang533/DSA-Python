@@ -93,7 +93,7 @@ class LinkedList:
 
     def insert(self, index, value):
         " Insert a value in the list at the position 'index' "
-        if index < 0 or index> (self.length - 1):
+        if index < 0 or index > (self.length - 1):
             return False
         if index == 0:
             return self.prepend(value)
@@ -119,8 +119,17 @@ class LinkedList:
         pre.next = temp.next
         temp.next = None
 
-    def reverse(self):
+    def reverse(self):  # !!!
         " Reverse the sequence of the list "
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp  # This line and above: reverse pointers head and tail only
+        before = None  # This line and below: reverse every arrow
+        for _ in range(self.length):  # 3 pointers moving along: before, temp, after
+            after = temp.next
+            temp.next = before  # REVERSE
+            before = temp  # Move pointer
+            temp = after  # Move pointer
 
 
 my_linked_list = LinkedList(4)
