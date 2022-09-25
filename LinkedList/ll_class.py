@@ -28,8 +28,9 @@ class LinkedList:
         if self.length == 0:  # Edge case 1
             self.head = new_node
             self.tail = new_node
-        self.tail.next = new_node
-        self.tail = self.tail.next
+        else:
+            self.tail.next = new_node
+            self.tail = self.tail.next
         self.length += 1
         return True  # Used in insert()
 
