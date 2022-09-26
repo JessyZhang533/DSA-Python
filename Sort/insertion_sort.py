@@ -2,7 +2,7 @@ def insertion_sort_1(my_list):  # my version
     " Sort the list by ascending order: iterate through the list from the second item, in each loop compare the item with the items before it "
     for i in range(1, len(my_list)):
         temp = my_list[i]
-        for j in range(i-1, -1, -1):  # cannot reach -1, can only decrease to 0
+        for j in range(i-1, -1, -1):  # cannot reach -1, can only decrease to 0; the previous i items are all sorted, and now we try to insert the (i+1)th item into them
             if temp < my_list[j]:  # If list is almost sorted, t.c.=O(n^2) still
                 my_list[j + 1] = my_list[j]
                 my_list[j] = temp
