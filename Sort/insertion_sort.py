@@ -1,5 +1,5 @@
 def insertion_sort_1(my_list):  # my version
-    " Sort the list by: starting from the second item, put it to the left most place (left = small)  "
+    " Sort the list by ascending order: iterate through the list from the second item, in each loop compare the item with the items before it "
     for i in range(1, len(my_list)):
         temp = my_list[i]
         for j in range(i-1, -1, -1):  # cannot reach -1, can only decrease to 0
