@@ -6,20 +6,18 @@
 # https://www.youtube.com/watch?v=tWVWeAqZ0WU&t=1348s
 
 
-def bfs_graph(graph, node):
-    " Print/Visit every vertices of the graph; traverse the graph by exploring every other vertices connected to one vertex "
+def BFS_graph(graph, vertex):
+    " Start from the given vertex, traverse the graph using breadth first search "
     queue = []
-    nodes_visited = []
-
-    queue.append(node)
-    nodes_visited.append(node)
+    result_list = []
+    queue.append(vertex)
     while queue:
-        m = queue.pop(0)  # concept of queue: first out
-        print(m, end=" ")  # end=" ": each printed item is separated with a blank
-        for adj_node in graph[m]:
-            if adj_node not in nodes_visited:
-                queue.append(adj_node)
-                nodes_visited.append(adj_node)
+        current_vertex = queue.pop(0)
+        result_list.append(current_vertex)  # These above 6 lines are the same as in BST
+        for other_vertex in graph[current_vertex]:
+            if other_vertex not in result_list and other_vertex not in queue:  # !!! "not in result_list and not in queue"
+                queue.append(other_vertex)
+    return result_list
 
 
 my_graph = {
@@ -30,4 +28,4 @@ my_graph = {
   '4': ['8'],
   '8': []
 }  # This is a Directed Graph
-bfs_graph(my_graph, '5')
+print(BFS_graph(my_graph, '5'))
