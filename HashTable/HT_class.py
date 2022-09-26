@@ -1,3 +1,4 @@
+# Hash Table: An abstract data type that maps a key_value pair to an address. Characteristics: one way, deterministic
 # Here we create hashtables with nested lists
 # Should always have a prime number of addresses: increases the randomness of distribution & reduces collisions.
 # We treat hash tables, which are implemented as dictionaries in Python, as O(1). (_hash, set_item, get_item)
@@ -15,7 +16,7 @@ class HashTable:
             # ord(): Get the ASCII (America Standard Code for Information Interchange) number for each letter
             # 23: Can be any prime number
             # %: Get the remainder. 'len(self.data_map)' is 7, so the remainder can only be 0-6.
-            return my_hash
+        return my_hash
 
     def print_table(self):
         " Show Hash Table "
@@ -32,7 +33,7 @@ class HashTable:
         self.data_map[index].append([key, value])  # Add the pair to the list at the address
 
     def get_item(self, key):
-        " Pass the key as an arguemnt, return the value associated with it "
+        " Pass the key as an argument, return the value associated with it "
         index = self.__hash(key)  # Figure out the address
         if self.data_map[index] is not None:
             for i in self.data_map[index]:
@@ -43,9 +44,9 @@ class HashTable:
     def keys(self):
         " Encapsulate all keys into a list & return it "
         keys_list = []
-        for i in range(len(self.data_map)):
-            if self.data_map[i] is not None:
-                for j in self.data_map[i]:
+        for i in self.data_map:
+            if i is not None:
+                for j in i:
                     keys_list.append(j[0])
         return keys_list
 
