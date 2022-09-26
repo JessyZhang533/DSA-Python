@@ -6,16 +6,19 @@
 # https://www.youtube.com/watch?v=tWVWeAqZ0WU&t=1348s
 
 
-nodes_visited = []  # keep track of what nodes are visited
-
-
-def dfs_graph(graph, node):
+def DFS_graph(self, vertex):
     " Print/Visit every vertices of the graph; traverse the graph by going to the end of one path at a time "
-    if node not in nodes_visited:
-        print(node)
-        nodes_visited.append(node)
-        for adj_node in graph[node]:
-            dfs_graph(graph, adj_node)
+    result_list = []
+
+    def traverse(current_vertex):
+        " A function governing the rules of traversal "
+        if current_vertex not in result_list:
+            result_list.append(current_vertex)
+        for other_vertex in self[current_vertex]:
+            traverse(other_vertex)
+
+    traverse(vertex)
+    return result_list
 
 
 my_graph = {
@@ -26,4 +29,4 @@ my_graph = {
   '4': ['8'],
   '8': []
 }  # This is a Directed Graph
-dfs_graph(my_graph, '5')
+print(DFS_graph(my_graph, '5'))
