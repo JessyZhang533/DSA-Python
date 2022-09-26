@@ -10,41 +10,41 @@ class Graph:  # This class is Undirected Graph
 
     def add_vertex(self, vertex):
         " Add an vertex to the graph "
-        if vertex not in self.adj_list.keys():  # Don't want duplicates; note 'not in', '.keys()'
-            self.adj_list[vertex] = []  # An enpty list used to contain adjacent vertices
-            return True  # !!!
+        if vertex not in self.adj_list.keys():
+            self.adj_list[vertex] = []
+            return True
         return False
 
     def print_graph(self):
         " Print the adjacent list (dictionary) without '{}' "
         for vertex in self.adj_list:
-            print(vertex, ": ", self.adj_list[vertex])
+            print(f"{vertex}: {self.adj_list[vertex]}")
 
     def add_edge(self, v1, v2):
         " Connect two vertices with an edge "
-        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():  # Check if the vertex id in the graph
-            self.adj_list[v1].append(v2)  # '.append()'
-            self.adj_list[v2].append(v1)
+        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
+            self.adj_list[v1].append(v2)
+            self.adj_list[v2].append(v1)  # This line is for undirected graph. directed graph do not need this line
             return True
-        return False  # At least one of the vertices is not in the graph
+        return False
 
     def remove_edge(self, v1, v2):
         " Disconnect two vertices/Remove the edge between two vertices "
         if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
-            try:  # try...except ValueError pass: To fix the case where a vertex exists but is not connected, and an edge including this vertex is removed
-                self.adj_list[v1].remove(v2)  # '.remove()'
-                self.adj_list[v2].remove(v1)
+            try:
+                self.adj_list[v1].remove(v2)
+                self.adj_list[v2].remove(v1)  # This line is for undirected graph. directed graph do not need this line
             except ValueError:
-                pass  # Ignore the error and move on to return True
+                pass
             return True
-        return False  # At least one of the vertices is not in the graph
+        return False
 
     def remove_vertex(self, vertex):
         " Remove the given vertex (& all associated edges) "
-        if vertex in self.adj_list.keys():
-            for other_vertex in self.adj_list[vertex]:
-                self.adj_list[other_vertex].remove(vertex)  # Remove all associated edges
-            del self.adj_list[vertex]  # Delete the vertex as a key
+        if vertex in self.adj_list:
+            for other_vertex in self.adj_list[vertex]:  # !!! Only iterate through vertices connected with the given vertex
+                self.adj_list[other_vertex].remove(vertex)
+            del self.adj_list[vertex]
             return True
         return False
 
