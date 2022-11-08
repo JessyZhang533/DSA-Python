@@ -56,12 +56,12 @@ class BinarySearchTree:
         result_list = []
         queue.append(current_node)
         while len(queue) > 0:  # !!!
-            curren_node = queue.pop(0)
-            result_list.append(curren_node.value)
-            if curren_node.left:
-                queue.append(curren_node.left)
-            if curren_node.right:
-                queue.append(curren_node.right)
+            current_node = queue.pop(0)
+            result_list.append(current_node.value)
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
         return result_list
 
     def dfs_pre_order(self):
