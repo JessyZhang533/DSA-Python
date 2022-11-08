@@ -4,7 +4,7 @@ def insertion_sort_1(my_list):  # my version
         temp = my_list[i]
         for j in range(i-1, -1, -1):  # cannot reach -1, can only decrease to 0
             if temp < my_list[j]:  # If list is almost sorted, t.c.=O(n^2) still
-                my_list[j + 1] = my_list[j]
+                my_list[j + 1] = my_list[j]  # !!! the original value of my_list[j + 1] is temp
                 my_list[j] = temp
     return my_list
 
