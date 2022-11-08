@@ -115,6 +115,7 @@ my_tree.insert(-89)
 my_tree.insert(-8)
 my_tree.insert(7)
 my_tree.insert(36)
+my_tree.insert(-90)
 # print(my_tree.root.left.value)  # Should be 1
 # print(my_tree.contain(4))  # Returns nothing without 'print'!
 # print(my_tree.min_value_node(my_tree.root))
