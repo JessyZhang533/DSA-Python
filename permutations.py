@@ -13,7 +13,7 @@ def permutation(list):
         return [list[:]]
     for _ in range(len(list)):
         n = list.pop(0)  # Here the poped element, n, used to be the first of the list
-        perms = permutation(list)
+        perms = permutation(list)  # here the 'perms' will contain all permutations of the popped/updated list that we input into 'permutation'
         for perm in perms:
             perm.append(n)
         result.extend(perms)  # 'result' of the first (bottom) call stack of 'permutation' function will always be updated with more and more final permutations
